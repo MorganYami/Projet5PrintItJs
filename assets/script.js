@@ -25,7 +25,7 @@ const bannerTxt = document.getElementById("banner_txt")
 
 //adding dot to the bottom of the carousel
 const dotBlock = document.getElementById("dots")
-for (let i=0; i < slideLeght; i++) {
+for (let i = 0; i < slideLeght; i++) {
 	const dotDiv = document.createElement("div")
 	dotDiv.classList.add("dot")
 	dotBlock.appendChild(dotDiv)
@@ -33,26 +33,36 @@ for (let i=0; i < slideLeght; i++) {
 
 const dotList = document.querySelectorAll(".dot")
 let dotSelected = dotList[currentSlide]
-dotSelected.classList.add ("dot_selected")
+dotSelected.classList.add("dot_selected")
 
 
 //event listeners for clic on arrows
 const carouselLeft = document.getElementById("carousel_left")
 carouselLeft.addEventListener("click", function () {
-	dotSelected.classList.remove ("dot_selected")
-	currentSlide--
+	dotSelected.classList.remove("dot_selected")
+	if (currentSlide === 0) {
+		currentSlide = slideLeght - 1
+	}
+	else {
+		currentSlide--
+	}
 	bannerImg.src = "./assets/images/slideshow/" + slides[currentSlide].image
 	bannerTxt.innerHTML = slides[currentSlide].tagLine
 	dotSelected = dotList[currentSlide]
-	dotSelected.classList.add ("dot_selected")
+	dotSelected.classList.add("dot_selected")
 })
 
 const carouselRight = document.getElementById("carousel_right")
 carouselRight.addEventListener("click", function () {
-	dotSelected.classList.remove ("dot_selected")
-	currentSlide++
+	dotSelected.classList.remove("dot_selected")
+	if (currentSlide === slideLeght - 1) {
+		currentSlide = 0
+	}
+	else {
+		currentSlide++
+	}
 	bannerImg.src = "./assets/images/slideshow/" + slides[currentSlide].image
 	bannerTxt.innerHTML = slides[currentSlide].tagLine
 	dotSelected = dotList[currentSlide]
-	dotSelected.classList.add ("dot_selected")
+	dotSelected.classList.add("dot_selected")
 })
