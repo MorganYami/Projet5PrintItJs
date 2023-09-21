@@ -22,9 +22,6 @@ let currentSlide = 0
 const slideLeght = slides.length
 const bannerImg = document.getElementById("banner_img")
 const bannerTxt = document.getElementById("banner_txt")
-const dotList = document.querySelectorAll(".dot")
-let dotSelected = dotList[currentSlide]
-dotSelected.classList.add("dot_selected")
 
 //adding dot to the bottom of the carousel
 const dotBlock = document.getElementById("dots")
@@ -33,6 +30,9 @@ for (let i = 0; i < slideLeght; i++) {
 	dotDiv.classList.add("dot")
 	dotBlock.appendChild(dotDiv)
 }
+const dotList = document.querySelectorAll(".dot")
+let dotSelected = dotList[currentSlide]
+dotSelected.classList.add("dot_selected")
 
 //change image and text of the carousel on clic
 const carouselLeft = document.getElementById("carousel_left")
